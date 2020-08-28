@@ -1,6 +1,10 @@
+Tutorial
 https://medium.com/bb-tutorials-and-thoughts/how-to-develop-and-build-angular-app-with-java-backend-87fb603c6e17
-
 -----------------------------------------------------------------------------------------
 Trabalho acadêmico 1
 http://repositorio.roca.utfpr.edu.br/jspui/bitstream/1/11503/1/PB_JV_CEETJ_IV_2018_18.pdf
+-----------------------------------------------------------------------------------------
+Trabalho acadêmico 2
+-----------------------------------------------------------------------------------------
+Trabalho acadêmico 3
 -----------------------------------------------------------------------------------------
