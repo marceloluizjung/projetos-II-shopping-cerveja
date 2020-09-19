@@ -1,4 +1,12 @@
 Relatório semanal
+2020-09-18 - aula05
+Relatar O QUE FOI FEITO:
+Instalação do java (JDK/JRE)
+Instalação NODEJS
+Instalação angular CLI 10
+Instalação MAVEN
+Instalação PostgreSQL
+Configuração das variáveis de ambiente
 
 
 2020-09-25 - aula06 desenvolvimento do projeto
