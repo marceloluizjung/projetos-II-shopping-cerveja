@@ -2,14 +2,13 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8 col-lg-6 col-xl-5">
-        <div class="card bg-pattern">
+        <div class="card bg-pattern card-login">
           <div class="card-body p-4">
             <!-- Logo -->
             <div class="text-center w-75 m-auto">
               <a routerLink="/">
-                <img src="assets/images/logo-dark.png" alt="" height="22">
+                <img src="assets/images/logo-dark.png" alt="" height="150">
               </a>
-              <p class="text-muted mb-4 mt-3">Enter your email address and password to access admin panel.</p>
             </div>
 
             <form class="needs-validation" name="loginForm" [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>

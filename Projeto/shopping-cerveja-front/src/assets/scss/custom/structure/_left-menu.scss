@@ -65,7 +65,7 @@
 // Sidemenu
 .left-side-menu {
   width: $leftbar-width;
-  background: $bg-leftbar;
+  background: $brown;
   bottom: 0;
   padding: 20px 0;
   position: fixed;
@@ -241,7 +241,7 @@
               position: relative;
               width: calc(190px + #{$leftbar-width-collapsed});
               color: $menu-item-active;
-              background-color: $gray-100;
+              background-color: $brown;
 
               span {
                 display: inline;
