@@ -1,12 +1,23 @@
 package br.com.delis.ShoppingCerveja.Domain;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "produtos")
 public class Produto {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String descricao;
+    @OneToOne
     private Vendedor vendedor;
     private double valor;
     private int quantidade;
+
+    public Produto() {
+
+    }
 
     public String getDescricao() {
         return descricao;
