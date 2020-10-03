@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/produto")
@@ -19,8 +20,13 @@ public class ProdutoController {
         return produtoService.listarProdutos();
     }
 
-    @PostMapping("/cadastrar")
-    public Produto cadastrarCliente(@RequestBody Produto produto) {
-        return produtoService.cadastrarProduto(produto);
+    @GetMapping("/detalhar")
+    public Optional<Produto> detalharProduto(int id) {
+        return produtoService.detalharProduto(id);
+    }
+
+    @PostMapping("/salvar")
+    public Produto salvarProduto(@RequestBody Produto produto) {
+        return produtoService.salvarProduto(produto);
     }
 }
