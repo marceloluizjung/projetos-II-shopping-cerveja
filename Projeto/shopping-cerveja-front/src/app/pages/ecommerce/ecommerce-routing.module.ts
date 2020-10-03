@@ -7,6 +7,7 @@ import { ProductsComponent } from './products/products.component';
 import { ProductdetailComponent } from './productdetail/productdetail.component';
 import { ProducteditComponent } from './productedit/productedit.component';
 import { EcommercedashboardComponent } from './ecommercedashboard/ecommercedashboard.component';
+import { StoresComponent } from './store/stores.component';
 
 const routes: Routes = [
     {
@@ -32,6 +33,10 @@ const routes: Routes = [
     {
         path: 'ecommerce-dashboard',
         component: EcommercedashboardComponent
+    },
+    {
+        path: 'stores',
+        component: StoresComponent
     }
 ];
 

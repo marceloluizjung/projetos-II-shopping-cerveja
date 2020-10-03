@@ -49,7 +49,7 @@ export class PasswordresetComponent implements OnInit, AfterViewInit {
     console.log(this.resetForm.value);
     setTimeout(() => {
       this.loading = false;
-      this.success = 'We have sent you an email containing a link to reset your password';
+      this.success = 'Um email foi enviado para redefinir a sua senha';
     }, 1000);
   }
 }
