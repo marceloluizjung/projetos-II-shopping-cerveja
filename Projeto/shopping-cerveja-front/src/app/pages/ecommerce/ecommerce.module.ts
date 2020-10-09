@@ -16,11 +16,12 @@ import { ProductsComponent } from './products/products.component';
 import { ProductdetailComponent } from './productdetail/productdetail.component';
 import { ProducteditComponent } from './productedit/productedit.component';
 import { EcommercedashboardComponent } from './ecommercedashboard/ecommercedashboard.component';
-import { StoresComponent } from './store/stores.component';
+import { ShoppingComponent } from './shopping/shopping.component';
+import { StoreComponent } from './store/store.component';
 
 @NgModule({
   // tslint:disable-next-line: max-line-length
-  declarations: [SellersComponent, OrdersComponent, ProductsComponent, ProductdetailComponent, ProducteditComponent, EcommercedashboardComponent, StoresComponent],
+  declarations: [SellersComponent, OrdersComponent, ProductsComponent, ProductdetailComponent, ProducteditComponent, EcommercedashboardComponent, ShoppingComponent, StoreComponent],
   imports: [
     CommonModule,
     FormsModule,

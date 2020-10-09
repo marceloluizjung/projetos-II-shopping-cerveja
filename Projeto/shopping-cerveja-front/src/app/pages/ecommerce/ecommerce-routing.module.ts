@@ -7,7 +7,8 @@ import { ProductsComponent } from './products/products.component';
 import { ProductdetailComponent } from './productdetail/productdetail.component';
 import { ProducteditComponent } from './productedit/productedit.component';
 import { EcommercedashboardComponent } from './ecommercedashboard/ecommercedashboard.component';
-import { StoresComponent } from './store/stores.component';
+import { ShoppingComponent } from './shopping/shopping.component';
+import { StoreComponent } from './store/store.component';
 
 const routes: Routes = [
     {
@@ -35,8 +36,12 @@ const routes: Routes = [
         component: EcommercedashboardComponent
     },
     {
-        path: 'stores',
-        component: StoresComponent
+        path: 'shopping',
+        component: ShoppingComponent
+    },
+    {
+        path: 'store',
+        component: StoreComponent
     }
 ];
 

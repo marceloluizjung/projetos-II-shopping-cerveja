@@ -1,19 +1,19 @@
-import { Products } from './../products/products.model';
+import { Products } from '../products/products.model';
 import { Component, OnInit } from '@angular/core';
 import { storeData } from './data';
 import { Stores } from './stores.model';
-import { productData } from './../products/data';
+import { productData } from '../products/data';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './stores.component.html',
-  styleUrls: ['./stores.component.scss']
+  selector: 'app-shopping',
+  templateUrl: './shopping.component.html',
+  styleUrls: ['./shopping.component.scss']
 })
 
 /**
  * Products component - handling the products with sidebar and content
  */
-export class StoresComponent implements OnInit {
+export class ShoppingComponent implements OnInit {
 
   // bread crumb items
   breadCrumbItems: Array<{}>;

@@ -1,0 +1,87 @@
+<app-page-title [breadcrumbItems]="breadCrumbItems"></app-page-title>
+
+<div class="container-header">
+    <div class="image-container">
+        <img src="assets/images/users/user-1.jpg" class="rounded-circle avatar-xl img-thumbnail" alt="profile-image">
+    </div>
+    <div class="description-container">
+        <div class="title">
+            <span style="font-size: 25px;">Nome da loja</span>
+            <span>email@email.com.br</span>
+            <span>
+                <i class="fe-phone"></i>
+                <span style="padding-left: 5px; padding-right: 5px;">Telefone</span>
+                <i class="mdi mdi-whatsapp" style="color: #25D366;"></i>
+                <span style="padding-left: 5px; padding-right: 5px;">Whats</span>
+                <i class="fe-facebook" style="color: #4267B2"></i>
+                <span style="padding-left: 5px; padding-right: 5px;">Face</span>
+                <i class="fe-instagram" style="color: #d6249f;"></i>
+                <span style="padding-left: 5px; padding-right: 5px;">Insta</span>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="card-box">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label class="sr-only">Search</label>
+                                <input type="search" class="form-control" placeholder="Search..." name="search"
+                                    [(ngModel)]="term">
+                            </div>
+                            <div class="form-group mx-sm-3">
+                                <label for="status-select" class="mr-2">Sort By</label>
+                                <select class="custom-select" id="status-select">
+                                    <option selected="">All</option>
+                                    <option value="1">Popular</option>
+                                    <option value="2">Price Low</option>
+                                    <option value="3">Price High</option>
+                                    <option value="4">Sold Out</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div> <!-- end row -->
+            </div> <!-- end card-box -->
+        </div> <!-- end col-->
+    </div>
+    <!-- end row-->
+
+    <div class="row">
+        <div class="col-md-6 col-xl-3" *ngFor="let product of productData | filter: term">
+            <div class="card-box product-box">
+                <a routerLink="/ecommerce/product-detail" class="text-dark">
+                    <div class="product-img-bg">
+                        <img src="{{ product.image }}" alt="product-pic" class="img-fluid" />
+                    </div>
+
+                    <div class="product-info">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h5 class="font-16 mt-0 sp-line-1">{{ product.name }}</h5>
+                                <div class="text-warning mb-2 font-13">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                                <h5 class="m-0"> <span class="text-muted"> Stocks : {{ product.stock }} pcs</span></h5>
+                            </div>
+                            <div class="col-auto">
+                                <div class="product-price-tag" style="background-color: #FFF !important;">
+                                    ${{product.price}}
+                                </div>
+                            </div>
+                        </div> <!-- end row -->
+                    </div> <!-- end product info-->
+                </a>
+            </div> <!-- end card-box-->
+        </div> <!-- end col-->
+    </div>
+</div>
