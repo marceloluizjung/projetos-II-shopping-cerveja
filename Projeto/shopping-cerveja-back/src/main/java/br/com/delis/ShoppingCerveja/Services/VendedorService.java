@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VendedorService implements IVendedorService {
@@ -20,7 +21,12 @@ public class VendedorService implements IVendedorService {
     }
 
     @Override
-    public Vendedor cadastrarVendedor(Vendedor vendedor) {
+    public Optional<Vendedor> detalharVendedor(int id) {
+        return vendedorRepository.findById(id);
+    }
+
+    @Override
+    public Vendedor salvarVendedor(Vendedor vendedor) {
         return vendedorRepository.save(vendedor);
     }
 }
