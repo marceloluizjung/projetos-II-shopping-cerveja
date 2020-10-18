@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { EcommerceRoutingModule } from './ecommerce-routing.module';
 import { UIModule } from '../../shared/ui/ui.module';
@@ -31,7 +31,8 @@ import { StoreComponent } from './store/store.component';
     NgbPaginationModule,
     NgbProgressbarModule,
     NgApexchartsModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    ReactiveFormsModule
   ]
 })
 export class EcommerceModule { }

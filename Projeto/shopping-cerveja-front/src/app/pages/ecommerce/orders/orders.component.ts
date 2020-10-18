@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { Orders } from './orders.model';
 
 import { ordersData } from './data';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MustMatch } from '../../form/validation/validation.mustmatch';
 
 @Component({
   selector: 'app-orders',
@@ -29,8 +31,10 @@ export class OrdersComponent implements OnInit {
   // start and end index
   startIndex = 1;
   endIndex = 10;
+  basicFormvalidation: FormGroup; // basic form validation
+  basicsubmit: boolean;
 
-  constructor() { }
+  constructor(private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     // tslint:disable-next-line: max-line-length
@@ -40,6 +44,15 @@ export class OrdersComponent implements OnInit {
      * fetches data
      */
     this._fetchData();
+
+    this.basicFormvalidation = this.formBuilder.group({
+      user: ['', [Validators.required, Validators.pattern('[a-zA-Z0-9]+')]],
+      email: ['', [Validators.required, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
+      confirmpwd: ['', Validators.required],
+    }, {
+        validator: MustMatch('password', 'confirmpwd'),
+      });
   }
   /**
    * Handle on page click event
@@ -58,5 +71,14 @@ export class OrdersComponent implements OnInit {
   private _fetchData() {
     this.ordersData = ordersData;
     this.totalRecords = ordersData.length;
+  }
+
+  basicSubmit() {
+    this.basicsubmit = true;
+  }
+
+
+  get basic() {
+    return this.basicFormvalidation.controls;
   }
 }
