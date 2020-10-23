@@ -60,43 +60,24 @@
                                             class="text-body font-weight-bold">{{ order.id }}</a>
                                     </td>
                                     <td>
-                                        <a href="javascript: void(0);"><img src="{{ order.products[0] }}"
-                                                alt="product-img" height="32" /></a>
-                                        <a href="javascript: void(0);" *ngIf="order.products[1]" class="ml-1"><img
-                                                src="{{ order.products[1] }}" alt="product-img" height="32" /></a>
-                                        <a href="javascript: void(0);" *ngIf="order.products[2]" class="ml-1"><img
-                                                src="{{ order.products[2] }}" alt="product-img" height="32" /></a>
+                                        <span><img src="{{ order.produtos[0].imagem }}"
+                                                alt="product-img" height="32" /></span>
                                     </td>
                                     <td>
-                                        {{ order.date }} <small class="text-muted">{{ order.time }}</small>
+                                        {{ order.dataCriacao }} <small class="text-muted">{{ order.dataCriacao }}</small>
                                     </td>
                                     <td>
-                                        <h5><span class="badge" [ngClass]="
-                                            {
-                                                'bg-soft-success text-success': order.status === 'Paid',
-                                                'bg-soft-warning text-warning': order.status === 'Awaiting Authorization',
-                                                'bg-soft-danger text-danger': order.status === 'Payment Failed',
-                                                'bg-soft-info text-info': order.status === 'Cash on Delivery'
-                                            }"><i class="mdi" [ngClass]="{
-                                                'mdi-timer-sand': order.status === 'Awaiting Authorization',
-                                                'mdi-coin': order.status === 'Paid',
-                                                'mdi-cancel': order.status === 'Payment Failed',
-                                                'mdi-cash': order.status === 'Cash on Delivery'
-                                            }"></i> {{ order.status }}</span></h5>
+                                        <h5><span class="badge bg-soft-success text-success" >
+                                            <i class="mdi mdi-timer-sand" ></i> {{ order.status }}</span></h5>
                                     </td>
                                     <td>
-                                        {{ order.total }}
+                                        {{ order.valor }}
                                     </td>
                                     <td>
-                                        {{ order.payment }}
+                                        {{ order.valor }}
                                     </td>
                                     <td>
-                                        <h5><span class="badge" [ngClass]="{
-                                                'badge-warning': order.order === 'Processing',
-                                                'badge-success': order.order === 'Delivered',
-                                                'badge-danger': order.order === 'Cancelled',
-                                                'badge-info': order.order === 'Shipped'
-                                            }"> {{ order.order }}</span></h5>
+                                        <h5><span class="badge badge-warning"> {{ order.id }}</span></h5>
                                     </td>
                                     <td>
                                         <a href="javascript:void(0);" class="action-icon"> <i

@@ -14,6 +14,7 @@ public class Produto {
     private Vendedor vendedor;
     private double valor;
     private int quantidade;
+    private String imagem;
 
     public Produto() {
 
@@ -57,5 +58,13 @@ public class Produto {
 
     public void setQuantidade(int quantidade) {
         this.quantidade = quantidade;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 }

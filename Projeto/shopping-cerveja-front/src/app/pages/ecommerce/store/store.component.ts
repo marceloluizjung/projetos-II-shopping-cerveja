@@ -1,6 +1,6 @@
-import { Products } from './../products/products.model';
 import { Component, OnInit } from "@angular/core";
 import { productData } from '../products/data';
+import { Produto } from "../../../core/models/produto.models";
 
 @Component({
   selector: "app-store",
@@ -15,7 +15,7 @@ export class StoreComponent implements OnInit {
    // bread crumb items
    breadCrumbItems: Array<{}>;
    term: any;
-   productData: Products[];
+   productData: Produto[];
  
    constructor() { }
  
@@ -33,6 +33,6 @@ export class StoreComponent implements OnInit {
     * fetches product values
     */
    private _fetchData() {
-     this.productData = productData;
+     //this.productData = productData;
    }
 }

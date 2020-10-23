@@ -13,6 +13,7 @@ public class Vendedor {
     private String email;
     private double nota;
     private String senha;
+    private String imagem;
 
     public Vendedor() {
 
@@ -54,5 +55,13 @@ public class Vendedor {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getImagem() {
+        return imagem;
+    }
+
+    public void setImagem(String imagem) {
+        this.imagem = imagem;
     }
 }

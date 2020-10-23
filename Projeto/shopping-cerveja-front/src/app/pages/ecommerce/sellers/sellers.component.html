@@ -35,12 +35,7 @@
                                             <label class="custom-control-label" for="customCheck">&nbsp;</label>
                                         </div>
                                     </th>
-                                    <th>Seller</th>
-                                    <th>Store Name</th>
-                                    <th>Products</th>
-                                    <th>Wallet Balance</th>
-                                    <th>Create Date</th>
-                                    <th>Revenue</th>
+                                    <th>Vendedor</th>
                                     <th style="width: 82px;">Action</th>
                                 </tr>
                             </thead>
@@ -53,26 +48,10 @@
                                         </div>
                                     </td>
                                     <td class="table-user">
-                                        <img src="{{ seller.image }}" alt="table-user" class="mr-2 rounded-circle">
+                                        <img src="{{ seller.imagem }}" alt="table-user" class="mr-2 rounded-circle">
                                         <a href="javascript:void(0);"
-                                            class="text-body font-weight-semibold">{{ seller.name }}</a>
+                                            class="text-body font-weight-semibold">{{ seller.nome }}</a>
                                     </td>
-                                    <td>
-                                        {{ seller.store }}
-                                    </td>
-                                    <td>
-                                        <span class="font-weight-semibold">{{ seller.product }}</span>
-                                    </td>
-                                    <td>
-                                        {{ seller.balance }}
-                                    </td>
-                                    <td>
-                                        {{ seller.date }}
-                                    </td>
-                                    <td>
-                                        {{ seller.revenue }}
-                                    </td>
-
                                     <td>
                                         <a href="javascript:void(0);" class="action-icon"> <i
                                                 class="mdi mdi-square-edit-outline"></i></a>
