@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Products } from './products.model';
-
-import { productData } from './data';
+import { ProdutoService } from '../../../core/services/produto.service';
+import { Produto } from '../../../core/models/produto.models';
 
 @Component({
   selector: 'app-products',
@@ -18,9 +17,9 @@ export class ProductsComponent implements OnInit {
   // bread crumb items
   breadCrumbItems: Array<{}>;
   term: any;
-  productData: Products[];
+  productData: Produto[];
 
-  constructor() { }
+  constructor(private produtoService: ProdutoService) { }
 
   ngOnInit() {
     // tslint:disable-next-line: max-line-length
@@ -36,6 +35,14 @@ export class ProductsComponent implements OnInit {
    * fetches product values
    */
   private _fetchData() {
-    this.productData = productData;
+
+    this.produtoService.listarProdutos()
+      .subscribe(
+        data => {
+          this.productData = data;
+        },
+        error => {
+          console.log(error);
+        });
   }
 }

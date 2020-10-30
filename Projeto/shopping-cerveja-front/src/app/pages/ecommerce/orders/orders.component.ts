@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Orders } from './orders.model';
 
-import { ordersData } from './data';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MustMatch } from '../../form/validation/validation.mustmatch';
+import { Compra } from '../../../core/models/compra.models';
+import { UserProfileService } from '../../../core/services/user.service';
 
 @Component({
   selector: 'app-orders',
@@ -20,7 +20,7 @@ export class OrdersComponent implements OnInit {
   // bread crumb items
   breadCrumbItems: Array<{}>;
   term: any;
-  ordersData: Orders[];
+  ordersData: Compra[];
   // page number
   page = 1;
   // default page size
@@ -34,7 +34,7 @@ export class OrdersComponent implements OnInit {
   basicFormvalidation: FormGroup; // basic form validation
   basicsubmit: boolean;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private userProfileService: UserProfileService) { }
 
   ngOnInit() {
     // tslint:disable-next-line: max-line-length
@@ -63,14 +63,22 @@ export class OrdersComponent implements OnInit {
     if (this.endIndex > this.totalRecords) {
       this.endIndex = this.totalRecords;
     }
-    this.ordersData = ordersData.slice(this.startIndex - 1, this.endIndex - 1);
+    this.ordersData = this.ordersData.slice(this.startIndex - 1, this.endIndex - 1);
   }
   /**
    * fetches the orders value
    */
   private _fetchData() {
-    this.ordersData = ordersData;
-    this.totalRecords = ordersData.length;
+    this.userProfileService.listarCompras(10)
+    .subscribe(
+      data => {
+        this.ordersData = data;
+        this.totalRecords = data.length;
+      },
+      error => {
+        console.log(error);
+      });
+    
   }
 
   basicSubmit() {

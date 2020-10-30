@@ -49,14 +49,14 @@
         </div>
 
         <div class="product-img-bg">
-          <img src="{{ product.image }}" alt="product-pic" class="img-fluid" />
+          <img src="{{ product.imagem }}" alt="product-pic" class="img-fluid" />
         </div>
 
         <div class="product-info">
           <div class="row align-items-center">
             <div class="col">
               <h5 class="font-16 mt-0 sp-line-1"><a routerLink="/ecommerce/product-detail"
-                  class="text-dark">{{ product.name }}</a> </h5>
+                  class="text-dark">{{ product.descricao }}</a> </h5>
               <div class="text-warning mb-2 font-13">
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
@@ -64,11 +64,11 @@
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>
               </div>
-              <h5 class="m-0"> <span class="text-muted"> Stocks : {{ product.stock }} pcs</span></h5>
+              <h5 class="m-0"> <span class="text-muted"> Stocks : {{ product.quantidade }} pcs</span></h5>
             </div>
             <div class="col-auto">
               <div class="product-price-tag">
-                ${{product.price}}
+                ${{product.valor}}
               </div>
             </div>
           </div> <!-- end row -->

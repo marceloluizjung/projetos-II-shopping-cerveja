@@ -1,8 +1,8 @@
-import { Products } from '../products/products.model';
 import { Component, OnInit } from '@angular/core';
 import { storeData } from './data';
 import { Stores } from './stores.model';
 import { productData } from '../products/data';
+import { Produto } from '../../../core/models/produto.models';
 
 @Component({
   selector: 'app-shopping',
@@ -19,7 +19,7 @@ export class ShoppingComponent implements OnInit {
   breadCrumbItems: Array<{}>;
   term: any;
   storeData: Stores[];
-  productsData: Products[];
+  productsData: Produto[];
   public shoppingSelected = "Lojas"; 
 
   constructor() { }
@@ -32,7 +32,7 @@ export class ShoppingComponent implements OnInit {
      * fetches data
      */
     this.storeData = storeData;
-    this.productsData = productData;
+    //this.productsData = productData;
   }
 
   public shoppingMode(shoppingSelected: any)  {

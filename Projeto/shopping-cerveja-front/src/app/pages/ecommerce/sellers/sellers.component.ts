@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Sellers } from './sellers.model';
-
-import { sellersData } from './data';
+import { Vendedor } from '../../../core/models/vendedor. models';
+import { VendedorService } from '../../../core/services/vendedor.service';
 
 @Component({
   selector: 'app-sellers',
@@ -18,7 +17,7 @@ export class SellersComponent implements OnInit {
   // bread crumb items
   breadCrumbItems: Array<{}>;
   term: any;
-  sellersData: Sellers[];
+  sellersData: Vendedor[];
   // page number
   page = 1;
   // default page size
@@ -29,7 +28,7 @@ export class SellersComponent implements OnInit {
   // start and end index
   startIndex = 1;
   endIndex = 10;
-  constructor() { }
+  constructor(private vendedorService: VendedorService) { }
 
   ngOnInit() {
     // tslint:disable-next-line: max-line-length
@@ -49,14 +48,23 @@ export class SellersComponent implements OnInit {
     if (this.endIndex > this.totalRecords) {
       this.endIndex = this.totalRecords;
     }
-    this.sellersData = sellersData.slice(this.startIndex - 1, this.endIndex - 1);
+    this.sellersData = this.sellersData.slice(this.startIndex - 1, this.endIndex - 1);
   }
 
   /**
    * fetches the sellers value
    */
   private _fetchData() {
-    this.sellersData = sellersData;
-    this.totalRecords = sellersData.length;
+    
+
+    this.vendedorService.listarVendedores()
+      .subscribe(
+        data => {
+          this.sellersData = data;
+          this.totalRecords = data.length;
+        },
+        error => {
+          console.log(error);
+        });
   }
 }
