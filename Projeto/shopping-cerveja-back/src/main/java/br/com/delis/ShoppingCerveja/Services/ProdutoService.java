@@ -1,6 +1,7 @@
 package br.com.delis.ShoppingCerveja.Services;
 
 import br.com.delis.ShoppingCerveja.Domain.Produto;
+import br.com.delis.ShoppingCerveja.Domain.Vendedor;
 import br.com.delis.ShoppingCerveja.Repositories.ProdutoRepository;
 import br.com.delis.ShoppingCerveja.Services.Interfaces.IProdutoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,13 @@ public class ProdutoService implements IProdutoService {
     @Override
     public List<Produto> listarProdutos() {
         return (List<Produto>) produtoRepository.findAll();
+    }
+
+    @Override
+    public List<Produto> listarProdutosVendedor(int idVendedor) {
+        Vendedor vendedor = new Vendedor();
+        vendedor.setId(idVendedor);
+        return (List<Produto>) produtoRepository.findAllByVendedor(vendedor);
     }
 
     @Override

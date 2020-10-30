@@ -20,6 +20,12 @@ public class ProdutoController {
         return produtoService.listarProdutos();
     }
 
+    @GetMapping("/listar/vendedor")
+    public List<Produto> listarProdutosVendedor(int idVendedor) {
+        return produtoService.listarProdutosVendedor(idVendedor);
+    }
+
+
     @GetMapping("/detalhar")
     public Optional<Produto> detalharProduto(int id) {
         return produtoService.detalharProduto(id);

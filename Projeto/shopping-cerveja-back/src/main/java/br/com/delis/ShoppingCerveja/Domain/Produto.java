@@ -15,6 +15,8 @@ public class Produto {
     private double valor;
     private int quantidade;
     private String imagem;
+    private String nome;
+    private String marca;
 
     public Produto() {
 
@@ -66,5 +68,21 @@ public class Produto {
 
     public void setImagem(String imagem) {
         this.imagem = imagem;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getMarca() {
+        return marca;
+    }
+
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 }
