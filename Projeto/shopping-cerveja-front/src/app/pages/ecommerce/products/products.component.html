@@ -27,7 +27,7 @@
             <div class="text-lg-right mt-3 mt-lg-0">
               <button type="button" class="btn btn-success mr-1"><i
                   class="mdi mdi-settings"></i></button>
-              <a routerLink="/ecommerce/product-edit" class="btn btn-danger"><i
+              <a routerLink="/ecommerce/product-new" class="btn btn-danger"><i
                   class="mdi mdi-plus-circle mr-1"></i> Add New</a>
             </div>
           </div><!-- end col-->
@@ -42,10 +42,8 @@
       <div class="card-box product-box">
 
         <div class="product-action">
-          <a routerLink="/ecommerce/product-edit" class="btn btn-success btn-xs"><i
+          <a [routerLink]="['/ecommerce/product-edit', product.id]" class="btn btn-success btn-xs"><i
               class="mdi mdi-pencil"></i></a>
-          <a href="javascript: void(0);" class="btn btn-danger btn-xs ml-1"><i
-              class="mdi mdi-close"></i></a>
         </div>
 
         <div class="product-img-bg">
@@ -55,7 +53,7 @@
         <div class="product-info">
           <div class="row align-items-center">
             <div class="col">
-              <h5 class="font-16 mt-0 sp-line-1"><a routerLink="/ecommerce/product-detail"
+              <h5 class="font-16 mt-0 sp-line-1"><a [routerLink]="['/ecommerce/product-detail', product.id]"
                   class="text-dark">{{ product.descricao }}</a> </h5>
               <div class="text-warning mb-2 font-13">
                 <i class="fa fa-star"></i>

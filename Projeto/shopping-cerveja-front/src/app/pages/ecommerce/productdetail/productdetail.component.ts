@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-
-import { Product } from './productdetail.model';
-
-import { productData } from './data';
+import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
+import { Produto } from "src/app/core/models/produto.models";
+import { ProdutoService } from "src/app/core/services/produto.service";
 
 @Component({
-  selector: 'app-productdetail',
-  templateUrl: './productdetail.component.html',
-  styleUrls: ['./productdetail.component.scss']
+  selector: "app-productdetail",
+  templateUrl: "./productdetail.component.html",
+  styleUrls: ["./productdetail.component.scss"],
 })
 
 /**
@@ -16,12 +15,20 @@ import { productData } from './data';
 export class ProductdetailComponent implements OnInit {
   // bread crumb items
   breadCrumbItems: Array<{}>;
-  productData: Product[];
-  constructor() { }
+  productData: Produto;
+  constructor(
+    private productService: ProdutoService,
+    private activatedRoute: ActivatedRoute,
+    private route: Router
+  ) {}
 
   ngOnInit() {
     // tslint:disable-next-line: max-line-length
-    this.breadCrumbItems = [{ label: 'UBold', path: '/' }, { label: 'eCommerce', path: '/' }, { label: 'Product Detail', path: '/', active: true }];
+    this.breadCrumbItems = [
+      { label: "UBold", path: "/" },
+      { label: "eCommerce", path: "/" },
+      { label: "Product Detail", path: "/", active: true },
+    ];
 
     /**
      * fetches data
@@ -35,7 +42,9 @@ export class ProductdetailComponent implements OnInit {
    */
   imageShow(event) {
     const image = event.target.src;
-    const expandImg = document.getElementById('expandedImg') as HTMLImageElement;
+    const expandImg = document.getElementById(
+      "expandedImg"
+    ) as HTMLImageElement;
     expandImg.src = image;
   }
 
@@ -43,6 +52,31 @@ export class ProductdetailComponent implements OnInit {
    * fethces product value
    */
   private _fetchData() {
-    this.productData = productData;
+    this.productService
+      .getProductById(this.activatedRoute.snapshot.params["id"])
+      .subscribe((response) => {
+        this.productData = response;
+        if(this.productData.quantidade == 0) this.productData.quantityPurchased = 0;
+        else this.productData.quantityPurchased = 1;
+      });
+  }
+
+  private addToCart() {
+    var cartItemsStorage: any = localStorage.getItem("cartItems");
+    if (!cartItemsStorage) {
+      cartItemsStorage = [];
+      cartItemsStorage.push(this.productData);
+      localStorage.setItem("cartItems", JSON.stringify(cartItemsStorage));
+    } else {
+      cartItemsStorage = JSON.parse(localStorage.getItem("cartItems"));
+      var itemFinder = cartItemsStorage.find(item => {
+        return item.id == this.productData.id;
+      });
+      if (!itemFinder) {
+        cartItemsStorage.push(this.productData);
+        localStorage.setItem("cartItems", JSON.stringify(cartItemsStorage));
+        debugger;
+      }
+    }
   }
 }

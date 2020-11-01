@@ -24,11 +24,15 @@ const routes: Routes = [
         component: ProductsComponent
     },
     {
-        path: 'product-detail',
+        path: 'product-detail/:id',
         component: ProductdetailComponent
     },
     {
-        path: 'product-edit',
+        path: 'product-edit/:id',
+        component: ProducteditComponent
+    },
+    {
+        path: 'product-new',
         component: ProducteditComponent
     },
     {

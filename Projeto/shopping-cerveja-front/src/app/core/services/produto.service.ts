@@ -1,10 +1,9 @@
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
-
+import { Produto } from 'src/app/core/models/produto.models';
 import { CookieService } from '../services/cookie.service';
-import { Produto } from '../models/produto.models';
+
 
 @Injectable({ providedIn: 'root' })
 export class ProdutoService {
@@ -15,6 +14,20 @@ export class ProdutoService {
     
     listarProdutos() {
         return this.http.get<Produto[]>('http://localhost:8181/shopping-cerveja/produto/listar')
+            .pipe(map(response => {
+                return response;
+            }));
+    }
+
+    getProductById(id: String) {
+        return this.http.get<Produto>(`http://localhost:8181/shopping-cerveja/produto/detalhar/${id}`)
+            .pipe(map(response => {
+                return response;
+            }));
+    }
+
+    createProduct(product: Produto) {
+        return this.http.post<Produto>(`http://localhost:8181/shopping-cerveja/produto/salvar`, product)
             .pipe(map(response => {
                 return response;
             }));
