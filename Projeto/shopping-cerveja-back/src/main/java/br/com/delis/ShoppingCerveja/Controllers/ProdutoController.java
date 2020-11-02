@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
+@CrossOrigin(maxAge = 3600)
 @RestController
 @RequestMapping("/produto")
 public class ProdutoController {
@@ -33,5 +34,10 @@ public class ProdutoController {
     @PostMapping("/salvar")
     public Produto salvarProduto(@RequestBody Produto produto) {
         return produtoService.salvarProduto(produto);
+    }
+
+    @DeleteMapping("/excluir/{id}")
+    public void deleteProduto(@PathVariable int id) {
+        produtoService.excluirProduto(id);
     }
 }

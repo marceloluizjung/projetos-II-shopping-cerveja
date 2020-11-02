@@ -32,5 +32,12 @@ export class ProdutoService {
                 return response;
             }));
     }
+
+    deleteProductById(id: String) {
+        return this.http.delete<void>(`http://localhost:8181/shopping-cerveja/produto/excluir/${id}`)
+            .pipe(map(response => {
+                return response;
+            }));
+    }
 }
 

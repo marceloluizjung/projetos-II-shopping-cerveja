@@ -37,4 +37,9 @@ public class ProdutoService implements IProdutoService {
     public Produto salvarProduto(Produto produto) {
         return produtoRepository.save(produto);
     }
+
+    @Override
+    public void excluirProduto(int id) {
+        produtoRepository.deleteById(id);
+    }
 }

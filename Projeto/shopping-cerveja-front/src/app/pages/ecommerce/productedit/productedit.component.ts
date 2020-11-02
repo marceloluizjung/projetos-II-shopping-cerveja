@@ -1,7 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
-import { finalize } from 'rxjs/operators';
+import { finalize } from "rxjs/operators";
 import { ProdutoService } from "src/app/core/services/produto.service";
 import Swal from "sweetalert2";
 import { Produto } from "./../../../core/models/produto.models";
@@ -60,6 +60,7 @@ export class ProducteditComponent implements OnInit {
   private submitForm() {
     this.loader = true;
     let product: Produto = {
+      id: this.activatedRoute.snapshot.params["id"],
       descricao: "",
       quantidade: 1,
       valor: 1,
@@ -73,21 +74,12 @@ export class ProducteditComponent implements OnInit {
       },
       imagem: "",
     };
-
-    if (this.activatedRoute.snapshot.params["id"]) {
-      this.loader = false;
-      this.showMessageSuccess().then(()=>{
-        this.router.navigate(['/ecommerce/products']);
+    this.productService.createProduct(product).subscribe((response) => {
+      this.showMessageSuccess().then(() => {
+        this.loader = false;
+        this.router.navigate(["/ecommerce/products"]);
       });
-    } else {
-      this.productService.createProduct(product)
-        .subscribe((response) => {
-          this.showMessageSuccess().then(()=>{
-            this.loader = false;
-            this.router.navigate(['/ecommerce/products']);
-          });
-      });
-    }
+    });
   }
 
   public showMessageSuccess() {
@@ -101,16 +93,33 @@ export class ProducteditComponent implements OnInit {
 
   public showMessageAlert() {
     return Swal.fire({
-      title: "Good job!",
-      text: "You clicked the button!",
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
       type: "warning",
-      confirmButtonClass: "btn btn-confirm mt-2",
+      showCancelButton: true,
+      confirmButtonText: "Yes, delete it!",
+      cancelButtonText: "No, cancel!",
+      confirmButtonClass: "btn btn-success mt-2",
+      cancelButtonClass: "btn btn-danger ml-2 mt-2",
+      buttonsStyling: false,
     });
   }
 
-  public onCancel() { 
-    this.showMessageAlert().then(()=>{
-      this.router.navigate(['/ecommerce/products']);
+  public onCancel() {
+    this.showMessageAlert().then((status) => {
+      if (status.value) this.router.navigate(["/ecommerce/products"]);
+    });
+  }
+
+  public onDelete() {
+    this.showMessageAlert().then((status) => {
+      if (status.value) {
+        this.productService
+          .deleteProductById(this.activatedRoute.snapshot.params["id"])
+          .subscribe((response) => {
+            this.router.navigate(["/ecommerce/products"]);
+          });
+      }
     });
   }
 }

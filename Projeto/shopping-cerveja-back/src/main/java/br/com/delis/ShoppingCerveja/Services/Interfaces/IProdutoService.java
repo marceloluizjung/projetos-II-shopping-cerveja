@@ -11,4 +11,5 @@ public interface IProdutoService {
     List<Produto> listarProdutosVendedor(int idVendedor);
     Optional<Produto> detalharProduto(int id);
     Produto salvarProduto(Produto produto);
+    void excluirProduto(int id);
 }
