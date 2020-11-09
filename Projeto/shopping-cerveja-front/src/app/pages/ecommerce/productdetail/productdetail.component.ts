@@ -1,3 +1,4 @@
+import { StoService } from './../../../core/services/sto.service';
 import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Produto } from "src/app/core/models/produto.models";
@@ -15,11 +16,12 @@ import { ProdutoService } from "src/app/core/services/produto.service";
 export class ProductdetailComponent implements OnInit {
   // bread crumb items
   breadCrumbItems: Array<{}>;
-  productData: Produto;
+  productData: any = {};
   constructor(
     private productService: ProdutoService,
     private activatedRoute: ActivatedRoute,
-    private route: Router
+    private route: Router,
+    private stoService: StoService
   ) {}
 
   ngOnInit() {
