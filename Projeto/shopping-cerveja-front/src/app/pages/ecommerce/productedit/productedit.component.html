@@ -30,8 +30,9 @@
 
                     <div class="form-group mb-3">
                         <label for="product-price">Valor <span class="text-danger">*</span></label>
-                        <input type="text" class="form-control" id="product-price" placeholder="Enter amount"
-                            name="price" formControlName="price" autocomplete="off">
+                        <input type="text" class="form-control price" id="product-price" placeholder="Enter amount"
+                            name="price" formControlName="price" autocomplete="off" currencyMask
+                            [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
                     </div>
 
                     <div class="form-group mb-3">
