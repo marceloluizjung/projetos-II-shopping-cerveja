@@ -8,4 +8,6 @@ export class Produto {
     vendedor: Vendedor;
     imagem?: string;
     quantityPurchased?: number;
+    marca?: string;
+    nome?: string;
 }

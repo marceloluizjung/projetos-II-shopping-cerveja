@@ -46,6 +46,8 @@ export class ProducteditComponent implements OnInit {
         .subscribe((response) => {
           this.productData = response;
           this.productForm.patchValue({
+            name: this.productData.nome,
+            reference: this.productData.marca,
             description: this.productData.descricao,
             price: this.productData.valor,
           });
@@ -55,6 +57,8 @@ export class ProducteditComponent implements OnInit {
 
   private createForm() {
     return this.formBuilder.group({
+      name: ["", Validators.required],
+      reference: ["", Validators.required],
       description: ["", Validators.required],
       price: ["", Validators.required],
     });
@@ -65,9 +69,11 @@ export class ProducteditComponent implements OnInit {
     this.loader = true;
     let product: Produto = {
       id: this.activatedRoute.snapshot.params["id"],
-      descricao: "",
+      nome: this.productForm.value["name"],
+      marca: this.productForm.value["reference"],
+      descricao: this.productForm.value["description"],
       quantidade: 1,
-      valor: 1,
+      valor: this.productForm.value["price"],
       vendedor: {
         id: 1,
         email: "teste@teste.com",
@@ -75,8 +81,7 @@ export class ProducteditComponent implements OnInit {
         nota: 1,
         senha: "123",
         imagem: "",
-      },
-      imagem: "",
+      }
     };
     this.productService.createProduct(product).subscribe((response) => {
       this.showMessageSuccess().then(() => {
