@@ -42,8 +42,8 @@
                     </div> <!-- end col -->
                     <div class="col-xl-7">
                         <div class="pl-xl-3 mt-3 mt-xl-0">
-                            <a href="#" class="text-primary">Jack & Jones</a>
-                            <h4 class="mb-3">Jack & Jones Men's T-shirt (Blue)</h4>
+                            <a href="#" class="text-primary">{{productData.nome}}</a>
+                            <h4 class="mb-3">{{productData.marca}}</h4>
                             <p class="text-muted float-left mr-3">
                                 <span class="mdi mdi-star text-warning"></span>
                                 <span class="mdi mdi-star text-warning"></span>
@@ -51,40 +51,12 @@
                                 <span class="mdi mdi-star text-warning"></span>
                                 <span class="mdi mdi-star"></span>
                             </p>
-                            <p class="mb-4"><a href="" class="text-muted">( 36 Customer Reviews )</a></p>
-                            <h6 class="text-danger text-uppercase">20 % Off</h6>
-                            <h4 class="mb-4"><span class="text-muted mr-2"><del>{{productData?.valor}}R$</del></span>
-                                <b>{{productData?.valor}}R$</b></h4>
+                            <h4 class="mb-4"><b>{{productData?.valor}}R$</b></h4>
                             <h4><span *ngIf="productData?.quantidade > 0"
                                     class="badge bg-soft-success text-success mb-4">Disponível: {{productData?.quantidade}} itens</span></h4>
                             <h4><span *ngIf="productData?.quantidade == 0"
                                     class="badge bg-soft-danger text-danger mb-4">Fora de estoque</span></h4>
                             <p class="text-muted mb-4">{{productData?.descricao}}</p>
-                            <div class="row mb-3">
-                                <div class="col-md-6">
-                                    <div>
-                                        <p class="text-muted"><i
-                                                class="mdi mdi-checkbox-marked-circle-outline h6 text-primary mr-2"></i>
-                                            Sed ut perspiciatis unde</p>
-                                        <p class="text-muted"><i
-                                                class="mdi mdi-checkbox-marked-circle-outline h6 text-primary mr-2"></i>
-                                            Nemo enim ipsam voluptatem</p>
-                                        <p class="text-muted"><i
-                                                class="mdi mdi-checkbox-marked-circle-outline h6 text-primary mr-2"></i>
-                                            Temporibus autem quibusdam et</p>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div>
-                                        <p class="text-muted"><i
-                                                class="mdi mdi-checkbox-marked-circle-outline h6 text-primary mr-2"></i>
-                                            Itaque earum rerum hic</p>
-                                        <p class="text-muted"><i
-                                                class="mdi mdi-checkbox-marked-circle-outline h6 text-primary mr-2"></i>
-                                            Donec quam felis ultricies nec</p>
-                                    </div>
-                                </div>
-                            </div>
                                 <label class="my-1 mr-2" for="quantityinput">Quantity</label>
                                 <input [(ngModel)]="productData.quantityPurchased" class="form-control my-1 mr-2" id="quantityinput" type="number" name="number" style="width: 80px;" min="0" [max]="productData?.quantidade">
                             <div>
