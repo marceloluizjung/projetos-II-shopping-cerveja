@@ -9,7 +9,10 @@ import { User } from '../models/auth.models';
 export class FakeBackendInterceptor implements HttpInterceptor {
     intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         const users: User[] = [
-            { id: 1, username: 'test', email: 'ubold@coderthemes.com', password: 'test', firstName: 'Test', lastName: 'User' }
+            { id: 1, username: 'admin', email: 'admin@admin.com', password: 'admin', firstName: 'Test', lastName: 'User', role: 'ADMIN' },
+            { id: 2, username: 'augusto', email: 'augusto@augusto.com', password: '123', firstName: 'Augusto', lastName: 'Conceição', role: 'USER' },
+            { id: 3, username: 'marcelo', email: 'marcelo@marcelo.com', password: '123', firstName: 'Marcelo', lastName: 'Jung', role: 'USER' },
+            { id: 4, username: 'kaiser', email: 'vendas@kaiser.com.br', password: '123', firstName: 'Kaiser', lastName: 'Ltda', role: 'SELLER' }
         ];
 
         const authHeader = request.headers.get('Authorization');

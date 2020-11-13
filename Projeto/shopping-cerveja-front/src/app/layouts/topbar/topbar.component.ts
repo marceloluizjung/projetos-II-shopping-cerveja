@@ -2,6 +2,8 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from '../../core/services/auth.service';
+import { User } from '../../core/models/auth.models';
+import { CookieService } from '../../core/services/cookie.service';
 
 @Component({
   selector: 'app-topbar',
@@ -21,18 +23,20 @@ export class TopbarComponent implements OnInit {
     flag?: string,
     name: string
   };
-
+  usuarioLogado: User;
   openMobileMenu: boolean;
 
   @Output() settingsButtonClicked = new EventEmitter();
   @Output() mobileMenuButtonClicked = new EventEmitter();
 
-  constructor(private router: Router, private authService: AuthenticationService) { }
+  constructor(private router: Router, private authService: AuthenticationService, private cookieService: CookieService) { }
 
   ngOnInit() {
     // get the notifications
     this._fetchNotifications();
     this.openMobileMenu = false;
+    this.usuarioLogado = JSON.parse(this.cookieService.getCookie('currentUser'));
+    console.log (this.usuarioLogado);
   }
 
 
