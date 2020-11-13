@@ -1,5 +1,6 @@
 import { Component, OnInit, AfterViewInit, ElementRef, ViewChild, Input, OnChanges } from '@angular/core';
 import MetisMenu from 'metismenujs/dist/metismenujs';
+import { CookieService } from 'src/app/core/services/cookie.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -11,12 +12,14 @@ export class SidebarComponent implements OnInit, AfterViewInit, OnChanges {
   @Input() isCondensed = false;
 
   menu: any;
+  private currentUser;
 
   @ViewChild('sideMenu', { static: false }) sideMenu: ElementRef;
 
-  constructor() { }
+  constructor(private cookieService: CookieService) { }
 
   ngOnInit() {
+    this.currentUser = JSON.parse(this.cookieService.getCookie('currentUser'));
   }
 
   ngAfterViewInit() {

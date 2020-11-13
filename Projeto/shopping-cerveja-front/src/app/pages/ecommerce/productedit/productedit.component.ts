@@ -50,6 +50,7 @@ export class ProducteditComponent implements OnInit {
             reference: this.productData.marca,
             description: this.productData.descricao,
             price: this.productData.valor,
+            quantity: this.productData.quantidade,
           });
         });
     }
@@ -61,6 +62,7 @@ export class ProducteditComponent implements OnInit {
       reference: ["", Validators.required],
       description: ["", Validators.required],
       price: ["", Validators.required],
+      quantity: ["", Validators.required],
     });
   }
 
@@ -72,7 +74,7 @@ export class ProducteditComponent implements OnInit {
       nome: this.productForm.value["name"],
       marca: this.productForm.value["reference"],
       descricao: this.productForm.value["description"],
-      quantidade: 1,
+      quantidade: this.productForm.value["quantity"],
       valor: this.productForm.value["price"],
       vendedor: {
         id: 1,
