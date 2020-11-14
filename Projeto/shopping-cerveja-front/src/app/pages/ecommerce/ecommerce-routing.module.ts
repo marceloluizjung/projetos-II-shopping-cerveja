@@ -44,7 +44,7 @@ const routes: Routes = [
         component: ShoppingComponent
     },
     {
-        path: 'store',
+        path: 'store/:id',
         component: StoreComponent
     }
 ];

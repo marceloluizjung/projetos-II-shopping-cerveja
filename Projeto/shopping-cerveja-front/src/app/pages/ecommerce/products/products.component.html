@@ -1,5 +1,5 @@
 <div class="container-fluid">
-  <app-page-title title="Meus produtos" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+  <app-page-title title="Meus produtos" [breadcrumbItems]="breadCrumbItems" *ngIf="currentUser?.role == 'SELLER'"></app-page-title>
 
   <div class="row">
     <div class="col-12">
@@ -13,7 +13,7 @@
               </div>
             </form>
           </div>
-          <div class="col-lg-4">
+          <div class="col-lg-4" *ngIf="currentUser?.role == 'SELLER'">
             <div class="text-lg-right mt-3 mt-lg-0">
               <a routerLink="/ecommerce/product-new" class="btn btn-success"><i
                   class="mdi mdi-plus-circle mr-1"></i> Produto</a>
@@ -42,7 +42,7 @@
           <div class="row align-items-center">
             <div class="col">
               <h5 class="font-16 mt-0 sp-line-1"><a [routerLink]="['/ecommerce/product-detail', product.id]"
-                  class="text-dark">{{ product.descricao }}</a> </h5>
+                  class="text-dark">{{ product.nome }}</a> </h5>
               <div class="text-warning mb-2 font-13">
                 <i class="fa fa-star"></i>
                 <i class="fa fa-star"></i>

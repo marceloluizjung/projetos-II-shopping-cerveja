@@ -18,5 +18,12 @@ export class VendedorService {
                 return response;
             }));
     }
+
+    getVendedorById(id: string) {
+        return this.http.get<Vendedor>(`http://localhost:8181/shopping-cerveja/vendedor/detalhar/${id}`)
+            .pipe(map(response => {
+                return response;
+            }));
+    }
 }
 

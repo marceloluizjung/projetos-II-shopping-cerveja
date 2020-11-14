@@ -20,8 +20,8 @@ public class VendedorController {
         return vendedorService.listarVendedores();
     }
 
-    @GetMapping("/detalhar")
-    public Optional<Vendedor> detalharVendedor(int id) {
+    @GetMapping("/detalhar/{id}")
+    public Optional<Vendedor> detalharVendedor(@PathVariable int id) {
         return vendedorService.detalharVendedor(id);
     }
 

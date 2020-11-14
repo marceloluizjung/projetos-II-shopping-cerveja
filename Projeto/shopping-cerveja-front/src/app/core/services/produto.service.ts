@@ -19,6 +19,13 @@ export class ProdutoService {
             }));
     }
 
+    listarProdutosByVendedor(id: string) {
+        return this.http.get<Produto[]>(`http://localhost:8181/shopping-cerveja/produto/listar/${id}`)
+            .pipe(map(response => {
+                return response;
+            }));
+    }
+
     getProductById(id: String) {
         return this.http.get<Produto>(`http://localhost:8181/shopping-cerveja/produto/detalhar/${id}`)
             .pipe(map(response => {

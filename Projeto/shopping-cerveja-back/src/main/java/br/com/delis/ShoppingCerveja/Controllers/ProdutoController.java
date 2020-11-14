@@ -21,9 +21,9 @@ public class ProdutoController {
         return produtoService.listarProdutos();
     }
 
-    @GetMapping("/listar/vendedor")
-    public List<Produto> listarProdutosVendedor(int idVendedor) {
-        return produtoService.listarProdutosVendedor(idVendedor);
+    @GetMapping("/listar/{id}")
+    public List<Produto> listarProdutosVendedor(@PathVariable int id) {
+        return produtoService.listarProdutosVendedor(id);
     }
 
     @GetMapping("/detalhar/{id}")

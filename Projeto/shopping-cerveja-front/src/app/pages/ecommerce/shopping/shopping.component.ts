@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { storeData } from './data';
-import { Stores } from './stores.model';
-import { productData } from '../products/data';
 import { Produto } from '../../../core/models/produto.models';
+import { VendedorService } from './../../../core/services/vendedor.service';
 
 @Component({
   selector: 'app-shopping',
@@ -18,21 +16,27 @@ export class ShoppingComponent implements OnInit {
   // bread crumb items
   breadCrumbItems: Array<{}>;
   term: any;
-  storeData: Stores[];
+  storeData: any;
   productsData: Produto[];
   public shoppingSelected = "Lojas"; 
 
-  constructor() { }
+  constructor(private vendedorService: VendedorService) { }
 
   ngOnInit() {
-    // tslint:disable-next-line: max-line-length
     this.breadCrumbItems = [{ label: 'UBold', path: '/' }, { label: 'eCommerce', path: '/' }, { label: 'Products', path: '/', active: true }];
 
     /**
      * fetches data
      */
-    this.storeData = storeData;
-    //this.productsData = productData;
+    this.vendedorService.listarVendedores().subscribe((response: any) =>{
+      this.storeData = response;
+      this.storeData.forEach(element => {
+        element.notaStar = [];
+        for(let cont = 0; cont < element.nota; cont++) {
+          element.notaStar.push({nota: cont})
+        }
+      });
+    });
   }
 
   public shoppingMode(shoppingSelected: any)  {
