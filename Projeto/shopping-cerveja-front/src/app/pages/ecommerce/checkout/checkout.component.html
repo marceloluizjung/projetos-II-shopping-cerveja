@@ -1,0 +1,96 @@
+<div class="container-fluid">
+    <app-page-title title="Carrinho" [breadcrumbItems]="breadCrumbItems"></app-page-title>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-centered mb-0">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>Produto</th>
+                                    <th>Quantidade</th>
+                                    <th>Valor Unitario</th>
+                                    <th>Total</th>
+                                    <th style="width: 125px;">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let order of ordersData | filter:term | slice:0:10; let i = index;">
+                                    <td>
+                                        <span><img src="{{ order.produtos[0].imagem }}"
+                                                alt="product-img" height="32" /></span>
+                                    </td>
+                                    <td>
+                                        1
+                                    </td>
+                                    <td>
+                                        {{ order.valor }}
+                                    </td>
+                                    <td>
+                                        {{ order.valor }}
+                                    </td>
+                                    <td>
+                                        <a href="javascript:void(0);" class="action-icon"> <i
+                                                class="mdi mdi-eye"></i></a>
+                                        <a href="javascript:void(0);" class="action-icon"> <i
+                                                class="mdi mdi-delete"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-lg-12" style="padding-left: 25px !important; padding-right: 25px !important;">
+        <div class="card-box">
+            <h4 class="header-title">Pagamento</h4>
+            <div class="row">
+                <div style="padding-right: 12px; padding-left: 12px;">
+                    <img width="50" height="50" src="https://www.flaticon.com/svg/static/icons/svg/349/349221.svg">
+                </div>
+                <div style="padding-right: 12px; padding-left: 12px;">
+                    <img width="50" height="50" src="https://www.flaticon.com/svg/static/icons/svg/196/196561.svg">
+                </div>
+                <div style="padding-right: 12px; padding-left: 12px;">
+                    <img width="50" height="50" src="https://www.flaticon.com/svg/static/icons/svg/196/196565.svg">
+                </div>
+                <div style="padding-right: 12px; padding-left: 12px;">
+                    <img width="50" height="50" src="https://www.flaticon.com/svg/static/icons/svg/196/196539.svg">
+                </div>
+            </div>
+            <form (ngSubmit)="basicSubmit()">
+                <div class="row">
+                    <div class="form-group col-lg-4">
+                        <label for="numeroCartao">Número do cartão</label>
+                        <input type="text" id="numeroCartao" name="numeroCartao" placeholder="Ex.: 9999.9999.9999.9999"
+                            class="form-control">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-2">
+                        <label for="validadeCartao">Validade</label>
+                        <input id="validadeCartao" name="validadeCartao" type="text" placeholder="mm/aaaa" class="form-control">
+                    </div>
+                    <div class="form-group col-lg-2">
+                        <label for="codigoCartao">Código de segurança</label>
+                        <input type="text" id="codigoCartao" name="codigoCartao" placeholder="999" class="form-control">
+                    </div>
+                    <div class="col-lg-2">
+                    </div>
+                </div>
+                <div class="form-group text-right mb-0">
+                    <button class="btn btn-success waves-effect waves-light mr-1" type="submit">
+                        Finalizar compra
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

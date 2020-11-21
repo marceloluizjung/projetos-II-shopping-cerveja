@@ -41,20 +41,24 @@
                     <span class="menu-arrow"></span>
                 </a>
                 <ul class="nav-second-level collapse" aria-expanded="false">
-                    <li>
+                    <li *ngIf="currentUser?.role == 'SELLER'">
                         <a routerLink="/ecommerce/products" routerLinkActive="active"
-                            class="side-nav-link-ref">Products</a>
+                            class="side-nav-link-ref">Produtos</a>
                     </li>
                     <li>
-                        <a routerLink="/ecommerce/orders" routerLinkActive="active" class="side-nav-link-ref">Orders</a>
+                        <a routerLink="/ecommerce/orders" routerLinkActive="active" class="side-nav-link-ref">Pedidos</a>
                     </li>
-                    <li>
+                    <li *ngIf="currentUser?.role == 'ADMIN'">
                         <a routerLink="/ecommerce/sellers" routerLinkActive="active"
-                            class="side-nav-link-ref">Sellers</a>
+                            class="side-nav-link-ref">Vendedores</a>
                     </li>
                     <li>
                         <a routerLink="/ecommerce/shopping" routerLinkActive="active"
                             class="side-nav-link-ref">Shopping</a>
+                    </li>
+                    <li>
+                        <a routerLink="/ecommerce/checkout" routerLinkActive="active"
+                            class="side-nav-link-ref">Carrinho</a>
                     </li>
                 </ul>
             </li>
