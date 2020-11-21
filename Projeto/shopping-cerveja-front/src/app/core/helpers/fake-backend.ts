@@ -12,7 +12,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             { id: 1, username: 'admin', email: 'admin@admin.com', password: 'admin', firstName: 'Test', lastName: 'User', role: 'ADMIN' },
             { id: 2, username: 'augusto', email: 'augusto@augusto.com', password: '123', firstName: 'Augusto', lastName: 'Conceição', role: 'USER' },
             { id: 3, username: 'marcelo', email: 'marcelo@marcelo.com', password: '123', firstName: 'Marcelo', lastName: 'Jung', role: 'USER' },
-            { id: 4, username: 'kaiser', email: 'vendas@kaiser.com.br', password: '123', firstName: 'Kaiser', lastName: 'Ltda', role: 'SELLER' }
+            { id: 1, username: 'kaiser', email: 'vendas@kaiser.com.br', password: '123', firstName: 'Kaiser', lastName: 'Ltda', role: 'SELLER' }
         ];
 
         const authHeader = request.headers.get('Authorization');

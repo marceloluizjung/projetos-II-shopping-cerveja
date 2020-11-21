@@ -2,27 +2,21 @@ import { ChartType } from './dashboard.model';
 const widgetData = [
     {
         icon: 'dripicons-wallet',
-        value: 58947,
-        title: 'Total Revenue',
+        value: 589.47,
+        title: 'Faturamento',
         color: 'primary'
     },
     {
         icon: 'dripicons-basket',
-        value: 1845,
-        title: 'Orders',
+        value: 18.45,
+        title: 'Vendas',
         color: 'success'
     },
     {
         icon: 'dripicons-store',
-        value: 58947,
-        title: 'Stores',
+        value: 47,
+        title: 'My store',
         color: 'info'
-    },
-    {
-        icon: 'dripicons-user-group',
-        value: 2430,
-        title: 'Total Revenue',
-        color: 'warning'
     },
 ];
 
