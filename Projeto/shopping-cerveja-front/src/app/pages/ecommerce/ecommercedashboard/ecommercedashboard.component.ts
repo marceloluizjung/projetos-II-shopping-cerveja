@@ -1,8 +1,10 @@
+import { VendedorService } from './../../../core/services/vendedor.service';
 import { Component, OnInit } from '@angular/core';
 
 import { Widget, Transaction, Products, ChartType } from './dashboard.model';
 
 import { widgetData, transactionData, productData, revenueAreaChart } from './data';
+import { CookieService } from 'src/app/core/services/cookie.service';
 
 @Component({
   selector: 'app-ecommercedashboard',
@@ -20,14 +22,18 @@ export class EcommercedashboardComponent implements OnInit {
   widgetData: Widget[];
   transactionData: Transaction[];
   productData: Products[];
-
   revenueAreaChart: ChartType;
-  constructor() { }
+  private currentUser;
+
+  constructor(private vendedorService: VendedorService, private cookieService: CookieService) { }
 
   ngOnInit() {
     // tslint:disable-next-line: max-line-length
     this.breadCrumbItems = [{ label: 'UBold', path: '/' }, { label: 'eCommerce', path: '/' }, { label: 'Dashboard', path: '/', active: true }];
-
+    this.currentUser = JSON.parse(this.cookieService.getCookie('currentUser'));
+    this.vendedorService.getVendedorById(this.currentUser.id).subscribe(response => {
+      debugger;
+    });
     /**
      * fetches data
      */

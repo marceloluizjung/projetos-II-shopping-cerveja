@@ -1,6 +1,7 @@
 package br.com.delis.ShoppingCerveja.Domain;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "vendedores")
@@ -14,6 +15,8 @@ public class Vendedor {
     private double nota;
     private String senha;
     private String imagem;
+    @OneToMany(mappedBy="vendedor")
+    private List<Venda> vendas;
 
     public Vendedor() {
 
@@ -63,5 +66,13 @@ public class Vendedor {
 
     public void setImagem(String imagem) {
         this.imagem = imagem;
+    }
+
+    public List<Venda> getVendas() {
+        return vendas;
+    }
+
+    public void setVendas(List<Venda> vendas) {
+        this.vendas = vendas;
     }
 }

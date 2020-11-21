@@ -19,6 +19,9 @@ public class Venda {
     private double valor;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataCriacao;
+    @ManyToOne
+    @JoinColumn(name="vendedor_id", nullable=false)
+    private Vendedor vendedor;
 
     public Venda() {
     }
@@ -61,5 +64,13 @@ public class Venda {
 
     public void setDataCriacao(Date dataCriacao) {
         this.dataCriacao = dataCriacao;
+    }
+
+    public Vendedor getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(Vendedor vendedor) {
+        this.vendedor = vendedor;
     }
 }
