@@ -25,7 +25,7 @@ export class ProductsComponent implements OnInit {
 
   ngOnInit() {
     // tslint:disable-next-line: max-line-length
-    this.breadCrumbItems = [{ label: 'UBold', path: '/' }, { label: 'eCommerce', path: '/' }, { label: 'Products', path: '/', active: true }];
+    this.breadCrumbItems = [{ label: 'Dellis', path: '/' }, { label: 'eCommerce', path: '/' }, { label: 'Produtos', path: '/', active: true }];
 
     this.currentUser = JSON.parse(this.cookieService.getCookie('currentUser'));
 
