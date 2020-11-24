@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
-  {path: '', redirectTo: '/dashboards/dashboard-1', pathMatch: 'full'},
+  {path: '', redirectTo: '/ecommerce/shopping', pathMatch: 'full'},
   { path: 'dashboards', loadChildren: () => import('./dashboards/dashboards.module').then(m => m.DashboardsModule) },
   { path: 'apps', loadChildren: () => import('./apps/apps.module').then(m => m.AppsModule) },
   { path: 'email', loadChildren: () => import('./email/email.module').then(m => m.EmailModule) },

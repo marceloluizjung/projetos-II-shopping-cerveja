@@ -3,6 +3,7 @@ import { Component, OnInit } from "@angular/core";
 import { ActivatedRoute, Router } from "@angular/router";
 import { Produto } from "src/app/core/models/produto.models";
 import { ProdutoService } from "src/app/core/services/produto.service";
+import Swal from 'sweetalert2';
 
 @Component({
   selector: "app-productdetail",
@@ -68,6 +69,7 @@ export class ProductdetailComponent implements OnInit {
     if (!cartItemsStorage) {
       cartItemsStorage = [];
       cartItemsStorage.push(this.productData);
+      Swal.fire('Adicionado!', 'Item adicionado ao carrinho!', 'success');
       localStorage.setItem("cartItems", JSON.stringify(cartItemsStorage));
     } else {
       cartItemsStorage = JSON.parse(localStorage.getItem("cartItems"));
@@ -76,9 +78,11 @@ export class ProductdetailComponent implements OnInit {
       });
       if (!itemFinder) {
         cartItemsStorage.push(this.productData);
+        Swal.fire('Adicionado!', 'Item adicionado ao carrinho!', 'success');
         localStorage.setItem("cartItems", JSON.stringify(cartItemsStorage));
-        debugger;
       }
     }
+
+
   }
 }

@@ -27,7 +27,7 @@ export class CheckoutComponent implements OnInit {
   // bread crumb items
   breadCrumbItems: Array<{}>;
   term: any;
-  ordersData: Compra[];
+  ordersData: Produto[];
   // page number
   page = 1;
   // default page size
@@ -71,16 +71,13 @@ export class CheckoutComponent implements OnInit {
    * fetches the orders value
    */
   private _fetchData() {
-    this.userProfileService.listarCompras(10)
-    .subscribe(
-      data => {
-        this.ordersData = data;
-        this.totalRecords = data.length;
-      },
-      error => {
-        console.log(error);
-      });
-    
+    this.ordersData = JSON.parse(localStorage.getItem("cartItems"));
+    this.totalRecords = this.ordersData.length;
+  }
+
+  removerItem(item) {
+    this.ordersData.splice(this.ordersData.indexOf(item), 1);
+    localStorage.setItem("cartItems", JSON.stringify(this.ordersData));
   }
 
   basicSubmit() {
@@ -99,21 +96,25 @@ export class CheckoutComponent implements OnInit {
         let compra = new Compra();
 
         let cliente = new Cliente();
-        cliente.id = 1;
+        cliente.id = this.currentUser.id;
         compra.cliente = cliente;
 
         compra.dataCriacao = new Date();
-        compra.valor = 10;
 
-        let produto = new Produto();
-        produto.id = 3;
+        let soma = 0;
+
+        for (let index = 0; index < this.ordersData.length; index++) {
+          soma += this.ordersData[index].valor*this.ordersData[index].quantityPurchased;
+        }
+
+        compra.valor = soma;
         
-        compra.produtos = [];
-        compra.produtos.push(produto)
+        compra.produtos = this.ordersData;
 
         this.vendaService.efetuarVenda(compra).subscribe(
           data => {
             Swal.fire('Confirmada!', 'Sua compra foi confirmada.', 'success');
+            this.ordersData = null;
           },
           error => {
             console.log(error);

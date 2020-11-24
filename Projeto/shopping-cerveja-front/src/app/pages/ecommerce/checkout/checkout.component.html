@@ -19,20 +19,19 @@
                             <tbody>
                                 <tr *ngFor="let order of ordersData | filter:term | slice:0:10; let i = index;">
                                     <td>
-                                        <span><img src="{{ order.produtos[0].imagem }}"
-                                                alt="product-img" height="32" /></span>
+                                        {{ order.descricao }}
                                     </td>
                                     <td>
-                                        1
+                                        {{ order.quantityPurchased }}
                                     </td>
                                     <td>
-                                        {{ order.valor }}
+                                        R$ {{ order.valor }}
                                     </td>
                                     <td>
-                                        {{ order.valor }}
+                                        R$ {{ order.valor*order.quantityPurchased }}
                                     </td>
                                     <td>
-                                        <a href="javascript:void(0);" class="action-icon"> <i
+                                        <a href="javascript:void(0);" (click)="removerItem(order)" class="action-icon"> <i
                                                 class="mdi mdi-delete"></i></a>
                                     </td>
                                 </tr>
