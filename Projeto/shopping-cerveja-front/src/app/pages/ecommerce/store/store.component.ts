@@ -30,9 +30,9 @@ export class StoreComponent implements OnInit {
   ngOnInit() {
     // tslint:disable-next-line: max-line-length
     this.breadCrumbItems = [
-      { label: "UBold", path: "/" },
+      { label: "Dellis", path: "/" },
       { label: "eCommerce", path: "/" },
-      { label: "Products", path: "/", active: true },
+      { label: "Loja", path: "/", active: true },
     ];
     this.vendedorService
       .getVendedorById(this.activatedRoute.snapshot.params["id"])

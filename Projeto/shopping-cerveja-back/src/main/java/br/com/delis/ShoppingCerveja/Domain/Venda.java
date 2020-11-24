@@ -14,7 +14,7 @@ public class Venda {
     private Integer id;
     @OneToOne
     private Cliente cliente;
-    @OneToMany
+    @ManyToMany
     private List<Produto> produtos;
     private double valor;
     @Temporal(TemporalType.TIMESTAMP)

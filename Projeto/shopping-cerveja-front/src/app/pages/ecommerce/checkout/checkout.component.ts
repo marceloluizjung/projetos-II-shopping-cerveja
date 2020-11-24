@@ -99,7 +99,7 @@ export class CheckoutComponent implements OnInit {
         let compra = new Compra();
 
         let cliente = new Cliente();
-        cliente.id = 10;
+        cliente.id = 1;
         compra.cliente = cliente;
 
         compra.dataCriacao = new Date();

@@ -23,7 +23,7 @@ export class ShoppingComponent implements OnInit {
   constructor(private vendedorService: VendedorService) { }
 
   ngOnInit() {
-    this.breadCrumbItems = [{ label: 'UBold', path: '/' }, { label: 'eCommerce', path: '/' }, { label: 'Products', path: '/', active: true }];
+    this.breadCrumbItems = [{ label: 'Dellis', path: '/' }, { label: 'eCommerce', path: '/' }, { label: 'Lojas', path: '/', active: true }];
 
     /**
      * fetches data
