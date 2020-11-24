@@ -9,6 +9,7 @@ import { ProducteditComponent } from './productedit/productedit.component';
 import { EcommercedashboardComponent } from './ecommercedashboard/ecommercedashboard.component';
 import { ShoppingComponent } from './shopping/shopping.component';
 import { StoreComponent } from './store/store.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 const routes: Routes = [
     {
@@ -46,7 +47,11 @@ const routes: Routes = [
     {
         path: 'store/:id',
         component: StoreComponent
-    }
+    },
+    {
+        path: 'checkout',
+        component: CheckoutComponent
+    },
 ];
 
 
