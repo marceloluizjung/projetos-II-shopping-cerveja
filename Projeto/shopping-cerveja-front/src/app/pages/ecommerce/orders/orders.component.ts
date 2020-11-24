@@ -5,6 +5,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MustMatch } from '../../form/validation/validation.mustmatch';
 import { Compra } from '../../../core/models/compra.models';
 import { UserProfileService } from '../../../core/services/user.service';
+import { CookieService } from '../../../core/services/cookie.service';
+import { User } from '../../../core/models/auth.models';
 
 @Component({
   selector: 'app-orders',
@@ -34,11 +36,14 @@ export class OrdersComponent implements OnInit {
   basicFormvalidation: FormGroup; // basic form validation
   basicsubmit: boolean;
 
-  constructor(private formBuilder: FormBuilder, private userProfileService: UserProfileService) { }
+  private currentUser: User;
+
+  constructor(private formBuilder: FormBuilder, private userProfileService: UserProfileService, private cookieService: CookieService) { }
 
   ngOnInit() {
     // tslint:disable-next-line: max-line-length
-    this.breadCrumbItems = [{ label: 'UBold', path: '/' }, { label: 'eCommerce', path: '/' }, { label: 'Orders', path: '/', active: true }];
+    this.breadCrumbItems = [{ label: 'Dellis', path: '/' }, { label: 'eCommerce', path: '/' }, { label: 'Pedidos', path: '/', active: true }];
+    this.currentUser = JSON.parse(this.cookieService.getCookie('currentUser'));
 
     /**
      * fetches data
@@ -69,7 +74,7 @@ export class OrdersComponent implements OnInit {
    * fetches the orders value
    */
   private _fetchData() {
-    this.userProfileService.listarCompras(10)
+    this.userProfileService.listarCompras(this.currentUser.id)
     .subscribe(
       data => {
         this.ordersData = data;

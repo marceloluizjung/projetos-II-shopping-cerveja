@@ -36,9 +36,9 @@ export class ProducteditComponent implements OnInit {
     this.productForm = this.createForm();
     // tslint:disable-next-line: max-line-length
     this.breadCrumbItems = [
-      { label: "UBold", path: "/" },
+      { label: "Dellis", path: "/" },
       { label: "eCommerce", path: "/" },
-      { label: "Product Edit", path: "/", active: true },
+      { label: "Cadastro de produto", path: "/", active: true },
     ];
     if (this.activatedRoute.snapshot.params["id"]) {
       this.productService
@@ -105,8 +105,8 @@ export class ProducteditComponent implements OnInit {
 
   public showMessageSuccess() {
     return Swal.fire({
-      title: "Good job!",
-      text: "You clicked the button!",
+      title: "Sucesso!",
+      text: "O produto foi salvo.",
       type: "success",
       confirmButtonClass: "btn btn-confirm mt-2",
     });
