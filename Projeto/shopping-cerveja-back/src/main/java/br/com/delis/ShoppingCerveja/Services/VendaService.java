@@ -22,4 +22,9 @@ public class VendaService implements IVendaService {
     public Venda efetuarVenda(Venda venda) {
         return vendaRepository.save(venda);
     }
+
+    @Override
+    public List<Venda> listarVendasByVendedor(String vendedorId) {
+        return vendaRepository.findAllByVendedor(vendedorId);
+    }
 }

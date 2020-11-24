@@ -15,8 +15,6 @@ public class Vendedor {
     private double nota;
     private String senha;
     private String imagem;
-    @OneToMany(mappedBy="vendedor")
-    private List<Venda> vendas;
 
     public Vendedor() {
 
@@ -68,11 +66,4 @@ public class Vendedor {
         this.imagem = imagem;
     }
 
-    public List<Venda> getVendas() {
-        return vendas;
-    }
-
-    public void setVendas(List<Venda> vendas) {
-        this.vendas = vendas;
-    }
 }

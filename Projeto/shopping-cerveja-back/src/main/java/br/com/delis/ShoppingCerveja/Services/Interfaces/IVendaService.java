@@ -8,4 +8,5 @@ import java.util.Optional;
 
 public interface IVendaService {
     Venda efetuarVenda(Venda venda);
+    List<Venda> listarVendasByVendedor(String vendedorId);
 }

@@ -17,4 +17,9 @@ public class VendaController {
     public Venda efetuarVenda(@RequestBody Venda venda) {
         return vendaService.efetuarVenda(venda);
     }
+
+    @GetMapping("/listar/{id}")
+    public List<Venda> detalhar(@PathVariable String id) {
+        return vendaService.listarVendasByVendedor(id);
+    }
 }
