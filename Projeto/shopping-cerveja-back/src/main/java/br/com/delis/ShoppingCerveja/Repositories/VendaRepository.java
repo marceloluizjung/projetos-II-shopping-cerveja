@@ -14,5 +14,5 @@ import java.util.List;
 public interface VendaRepository extends CrudRepository<Venda, Integer> {
     List<Venda> findAllByCliente(Cliente cliente);
 
-    List<Venda> findAllByVendedor(String vendedorId);
+    List<Venda> findAllByVendedorOrderByDataCriacaoAsc(String vendedorId);
 }

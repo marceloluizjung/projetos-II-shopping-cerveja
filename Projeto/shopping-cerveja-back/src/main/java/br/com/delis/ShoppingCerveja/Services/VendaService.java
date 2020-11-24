@@ -25,6 +25,6 @@ public class VendaService implements IVendaService {
 
     @Override
     public List<Venda> listarVendasByVendedor(String vendedorId) {
-        return vendaRepository.findAllByVendedor(vendedorId);
+        return vendaRepository.findAllByVendedorOrderByDataCriacaoAsc(vendedorId);
     }
 }
