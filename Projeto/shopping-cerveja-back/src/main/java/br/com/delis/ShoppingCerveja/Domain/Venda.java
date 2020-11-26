@@ -1,6 +1,8 @@
 package br.com.delis.ShoppingCerveja.Domain;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +21,24 @@ public class Venda {
     private double valor;
     @Temporal(TemporalType.TIMESTAMP)
     private Date dataCriacao;
+    private BigDecimal cartao;
+    private String bandeira;
+
+    public String getBandeira() {
+        return bandeira;
+    }
+
+    public void setBandeira(String bandeira) {
+        this.bandeira = bandeira;
+    }
+
+    public BigDecimal getCartao() {
+        return cartao;
+    }
+
+    public void setCartao(BigDecimal cartao) {
+        this.cartao = cartao;
+    }
 
     public String getVendedor() {
         return vendedor;

@@ -74,8 +74,13 @@ export class EcommercedashboardComponent implements OnInit {
 
       data.vendas.forEach((element) => {
         debugger;
+        element.bandeiraF = `assets/images/cards/${element.bandeira}.png`; 
         element.dataCriacaoF = new Date(element.dataCriacao).toLocaleString();
-        if(this.transactionData.length <= 10) this.transactionData.push(element);
+        if(this.transactionData.length < 10) this.transactionData.push(element);
+        else {
+          this.transactionData = this.transactionData.splice(1, 9);
+          this.transactionData.push(element); 
+        }
         let index = 0;
         let finder = categories.find((v) => {
           if (v.split("T")[0] == element.dataCriacao.split("T")[0]) return v;
@@ -83,10 +88,11 @@ export class EcommercedashboardComponent implements OnInit {
         });
         if (!finder) {
           if (categories.length > 30) {
+            debugger;
             categories = categories.splice(1, categories.length - 1);
             values = values.splice(1, values.length - 1);
           }
-          categories.push(element.dataCriacao.split("T")[0]);
+          categories.push(new Date(element.dataCriacao).toLocaleDateString());
           values.push(element.valor);
         } else {
           values[index] += element.valor;
@@ -98,7 +104,7 @@ export class EcommercedashboardComponent implements OnInit {
     this.widgetData = [
       {
         icon: "dripicons-wallet",
-        value: faturamento,
+        value: `R${faturamento}`,
         title: "Faturamento",
         color: "primary",
       },
@@ -155,5 +161,9 @@ export class EcommercedashboardComponent implements OnInit {
         },
       },
     };
+  }
+
+  public getCardNumberMasked(card: number) {
+      return `${card.toString().substring(0, 4)}-${card.toString().substring(4, 8)}-${card.toString().substring(8, 12)}-****`
   }
 }
