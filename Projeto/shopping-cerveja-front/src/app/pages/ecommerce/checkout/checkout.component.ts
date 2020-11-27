@@ -107,14 +107,19 @@ export class CheckoutComponent implements OnInit {
           soma += this.ordersData[index].valor*this.ordersData[index].quantityPurchased;
         }
 
+        compra.cartao = 123123123123;
+        compra.bandeira = 'Visa';
+
         compra.valor = soma;
+
+        compra.vendedor = this.ordersData[0].vendedor.id.toString();
         
         compra.produtos = this.ordersData;
 
         this.vendaService.efetuarVenda(compra).subscribe(
           data => {
             Swal.fire('Confirmada!', 'Sua compra foi confirmada.', 'success');
-            this.ordersData = null;
+            localStorage.removeItem('cartItems');
           },
           error => {
             console.log(error);

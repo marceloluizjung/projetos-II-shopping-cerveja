@@ -78,6 +78,9 @@ export class OrdersComponent implements OnInit {
     .subscribe(
       data => {
         this.ordersData = data;
+        this.ordersData.forEach((order:any) => {
+          order.dataCriacaoF = new Date(order.dataCriacao).toLocaleString()
+        });
         this.totalRecords = data.length;
       },
       error => {

@@ -34,9 +34,9 @@ export class EcommercedashboardComponent implements OnInit {
 
   ngOnInit() {
     this.breadCrumbItems = [
-      { label: "UBold", path: "/" },
+      { label: "Dellis", path: "/" },
       { label: "eCommerce", path: "/" },
-      { label: "Dashboard", path: "/", active: true },
+      { label: "Dashboard Vendas", path: "/", active: true },
     ];
     this.currentUser = JSON.parse(this.cookieService.getCookie("currentUser"));
     forkJoin(
@@ -104,7 +104,7 @@ export class EcommercedashboardComponent implements OnInit {
     this.widgetData = [
       {
         icon: "dripicons-wallet",
-        value: `R${faturamento}`,
+        value: `R$ ${faturamento}`,
         title: "Faturamento",
         color: "primary",
       },
@@ -135,7 +135,7 @@ export class EcommercedashboardComponent implements OnInit {
       },
       series: [
         {
-          name: "Desktops",
+          name: "R$",
           type: "area",
           data: values,
         },

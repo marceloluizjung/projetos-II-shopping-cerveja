@@ -7,4 +7,7 @@ export class Compra {
     id: number;
     produtos: Produto[];
     valor: number;
+    bandeira: string;
+    cartao: number;
+    vendedor: string;
 }

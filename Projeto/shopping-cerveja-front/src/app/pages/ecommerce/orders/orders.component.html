@@ -14,7 +14,6 @@
                                     <th>Total</th>
                                     <th>Dados do pagamento</th>
                                     <th>Situação</th>
-                                    <th style="width: 125px;"></th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -23,21 +22,17 @@
                                             class="text-body font-weight-bold">{{ order.id }}</a>
                                     </td>
                                     <td>
-                                        {{ order.dataCriacao }}
+                                        {{ order.dataCriacaoF }}
                                     </td>
                                     <td>
                                         R$ {{ order.valor }}
                                     </td>
                                     <td>
-                                        bababa
+                                        {{ order.cartao }}
                                     </td>
                                     <td>
                                         <h5><span class="badge bg-soft-success text-success" >
                                             <i class="mdi mdi-timer-sand" ></i> {{ order.status }}</span></h5>
-                                    </td>
-                                    <td>
-                                        <a href="javascript:void(0);" class="action-icon"> <i
-                                                class="mdi mdi-eye"></i></a>
                                     </td>
                                 </tr>
                             </tbody>
