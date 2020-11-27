@@ -1,11 +1,11 @@
 Relatório semanal
 
 Relatar O QUE FOI FEITO:
--
--
+- Criação do branch
+- Criação das anotações iniciais
 -
 
 Relatar QUEM FOI O RESPONSÁVEL
--
--
+- Marcelo
+- Augusto
 -
