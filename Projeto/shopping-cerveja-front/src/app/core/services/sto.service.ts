@@ -8,8 +8,8 @@ export class StoService {
     }
 
     
-    public getImagesByProduct() {
-        return this.http.get<any>('http://localhost:8181/shopping-cerveja/storage/files/Turma.jpeg');
+    public getImagesByOwner(ownerId: number) {
+        return this.http.get<any>(`http://localhost:8181/shopping-cerveja/storage/filesByOwner/${ownerId}`);
     }
 
     public uploadImages(files: any) {

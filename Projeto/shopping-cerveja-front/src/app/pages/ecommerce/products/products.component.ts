@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProdutoService } from '../../../core/services/produto.service';
 import { Produto } from '../../../core/models/produto.models';
 import { CookieService } from 'src/app/core/services/cookie.service';
+import { StoService } from 'src/app/core/services/sto.service';
 
 @Component({
   selector: 'app-products',
@@ -21,7 +22,7 @@ export class ProductsComponent implements OnInit {
   productData: Produto[];
   private currentUser;
 
-  constructor(private produtoService: ProdutoService, private cookieService: CookieService) { }
+  constructor(private produtoService: ProdutoService, private cookieService: CookieService, private stoService: StoService) { }
 
   ngOnInit() {
     // tslint:disable-next-line: max-line-length
@@ -43,6 +44,11 @@ export class ProductsComponent implements OnInit {
     this.produtoService.listarProdutos()
       .subscribe(
         data => {
+          data.forEach(product => { 
+            this.stoService.getImagesByOwner(product.id).subscribe(response => { 
+              product.imagem = response[0].replaceAll("//", "/");
+            });
+          });
           this.productData = data;
         },
         error => {

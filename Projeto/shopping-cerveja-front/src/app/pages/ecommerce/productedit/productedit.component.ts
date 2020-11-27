@@ -1,9 +1,9 @@
 import { Component, ElementRef, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
-import { FileUploadComponent } from '@iplab/ngx-file-upload';
+import { FileUploadComponent } from "@iplab/ngx-file-upload";
 import { ProdutoService } from "src/app/core/services/produto.service";
-import { StoService } from 'src/app/core/services/sto.service';
+import { StoService } from "src/app/core/services/sto.service";
 import Swal from "sweetalert2";
 import { Produto } from "./../../../core/models/produto.models";
 
@@ -22,7 +22,7 @@ export class ProducteditComponent implements OnInit {
   private productData: Produto;
   private productForm: FormGroup;
   private loader: boolean = false;
-  @ViewChild('fileUpload', {static: false}) fileUpload: any;
+  @ViewChild("fileUpload", { static: false }) fileUpload: any;
 
   constructor(
     private productService: ProdutoService,
@@ -83,7 +83,7 @@ export class ProducteditComponent implements OnInit {
         nota: 1,
         senha: "123",
         imagem: "",
-      }
+      },
     };
     this.productService.createProduct(product).subscribe((response) => {
       this.showMessageSuccess().then(() => {
@@ -93,13 +93,14 @@ export class ProducteditComponent implements OnInit {
     });
   }
 
-  public uploadFiles() { 
-    const formData = new FormData();
-    this.fileUpload.control.files.forEach(filelement => {
-      formData.append('file', filelement);
-    });
-    this.stoService.uploadImages(formData).subscribe(response =>{
-      debugger;
+  public uploadFiles() {
+    this.fileUpload.control.files.forEach((filelement) => {
+      let formData = new FormData();
+      formData.append("file", filelement);
+      formData.append("ownerId", "1");
+      setTimeout(() => {
+        this.stoService.uploadImages(formData).subscribe((response) => {});
+      }, 1000);
     });
   }
 

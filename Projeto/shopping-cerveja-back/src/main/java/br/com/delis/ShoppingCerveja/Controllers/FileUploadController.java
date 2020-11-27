@@ -1,5 +1,6 @@
 package br.com.delis.ShoppingCerveja.Controllers;
 
+import br.com.delis.ShoppingCerveja.Domain.Produto;
 import br.com.delis.ShoppingCerveja.Exception.StorageFileNotFoundException;
 import br.com.delis.ShoppingCerveja.Services.Interfaces.StorageService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.web.servlet.mvc.method.annotation.MvcUriComponentsBui
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.io.IOException;
+import java.nio.file.Path;
+import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -23,15 +26,9 @@ public class FileUploadController {
     @Autowired
     private StorageService storageService;
 
-    @GetMapping("/")
-    public String listUploadedFiles(Model model) throws IOException {
-
-        model.addAttribute("files", storageService.loadAll().map(
-                path -> MvcUriComponentsBuilder.fromMethodName(FileUploadController.class,
-                        "serveFile", path.getFileName().toString()).build().toUri().toString())
-                .collect(Collectors.toList()));
-
-        return "uploadForm";
+    @GetMapping("/filesByOwner/{ownerId}")
+    public List<String> listUploadedFiles(@PathVariable Integer ownerId, Model model) throws IOException {
+        return storageService.loadAll(ownerId);
     }
 
     @GetMapping("/files/{filename:.+}")
@@ -44,9 +41,9 @@ public class FileUploadController {
     }
 
     @PostMapping("/upload")
-    public Optional<String> handleFileUpload(@RequestParam("file") MultipartFile file,
+    public Optional<String> handleFileUpload(@RequestParam("file") MultipartFile file, @RequestParam("ownerId") String ownerId,
                                    RedirectAttributes redirectAttributes) {
-        storageService.store(file);
+        storageService.store(file, Integer.parseInt(ownerId));
         redirectAttributes.addFlashAttribute("message",
                 "You successfully uploaded " + file.getOriginalFilename() + "!");
         return Optional.of(file.getOriginalFilename());
