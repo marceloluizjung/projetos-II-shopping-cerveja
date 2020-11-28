@@ -6,6 +6,8 @@ import { ProdutoService } from "src/app/core/services/produto.service";
 import { StoService } from "src/app/core/services/sto.service";
 import Swal from "sweetalert2";
 import { Produto } from "./../../../core/models/produto.models";
+import { CookieService } from "../../../core/services/cookie.service";
+import { User } from "../../../core/models/auth.models";
 
 @Component({
   selector: "app-productedit",
@@ -18,6 +20,9 @@ import { Produto } from "./../../../core/models/produto.models";
  */
 export class ProducteditComponent implements OnInit {
   // bread crumb items
+
+  private currentUser: User;
+
   private breadCrumbItems: Array<{}>;
   private productData: Produto;
   private productForm: FormGroup;
@@ -30,10 +35,12 @@ export class ProducteditComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
-    private stoService: StoService
+    private stoService: StoService,
+    private cookieService: CookieService
   ) {}
 
   ngOnInit() {
+    this.currentUser = JSON.parse(this.cookieService.getCookie('currentUser'));
     this.productForm = this.createForm();
     // tslint:disable-next-line: max-line-length
     this.breadCrumbItems = [
@@ -78,7 +85,7 @@ export class ProducteditComponent implements OnInit {
       quantidade: this.productForm.value["quantity"],
       valor: this.productForm.value["price"],
       vendedor: {
-        id: 1,
+        id: this.currentUser.id,
         email: "teste@teste.com",
         nome: "Tenant 1",
         nota: 1,
