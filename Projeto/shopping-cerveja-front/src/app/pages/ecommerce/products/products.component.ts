@@ -45,7 +45,7 @@ export class ProductsComponent implements OnInit {
         data => {
           data.forEach(product => { 
             this.stoService.getImagesByOwner(product.id).subscribe(response => { 
-              product.imagem = response[0].replaceAll("//", "/");
+              if(response && response[0]) product.imagem = response[0].replaceAll("//", "/");
             });
           });
           this.productData = data;

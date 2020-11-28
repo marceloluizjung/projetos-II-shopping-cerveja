@@ -22,6 +22,7 @@ export class ProducteditComponent implements OnInit {
   private productData: Produto;
   private productForm: FormGroup;
   private loader: boolean = false;
+  private images: any;
   @ViewChild("fileUpload", { static: false }) fileUpload: any;
 
   constructor(
@@ -67,7 +68,7 @@ export class ProducteditComponent implements OnInit {
   }
 
   private submitForm() {
-    this.uploadFiles();
+    this.images = [...this.fileUpload.control.files];
     this.loader = true;
     let product: Produto = {
       id: this.activatedRoute.snapshot.params["id"],
@@ -86,6 +87,7 @@ export class ProducteditComponent implements OnInit {
       },
     };
     this.productService.createProduct(product).subscribe((response) => {
+      this.uploadFiles(response.id);
       this.showMessageSuccess().then(() => {
         this.loader = false;
         this.router.navigate(["/ecommerce/products"]);
@@ -93,15 +95,17 @@ export class ProducteditComponent implements OnInit {
     });
   }
 
-  public uploadFiles() {
-    this.fileUpload.control.files.forEach((filelement) => {
-      let formData = new FormData();
-      formData.append("file", filelement);
-      formData.append("ownerId", "1");
-      setTimeout(() => {
-        this.stoService.uploadImages(formData).subscribe((response) => {});
-      }, 1000);
-    });
+  public uploadFiles(id?: number) {
+    if (this.images) {
+        this.images.forEach((filelement) => {
+        let formData = new FormData();
+        formData.append("file", filelement);
+        formData.append("ownerId", id.toString());
+        setTimeout(() => {
+          this.stoService.uploadImages(formData).subscribe((response) => {});
+        }, 1000);
+      });
+    }
   }
 
   public showMessageSuccess() {

@@ -4,6 +4,7 @@ import { ProdutoService } from "src/app/core/services/produto.service";
 import { Component, OnInit } from "@angular/core";
 import { Produto } from "../../../core/models/produto.models";
 import { Vendedor } from "src/app/core/models/vendedor. models";
+import { StoService } from 'src/app/core/services/sto.service';
 
 @Component({
   selector: "app-store",
@@ -24,7 +25,8 @@ export class StoreComponent implements OnInit {
   constructor(
     private produtoService: ProdutoService,
     private activatedRoute: ActivatedRoute,
-    private vendedorService: VendedorService
+    private vendedorService: VendedorService,
+    private stoService: StoService
   ) {}
 
   ngOnInit() {
@@ -51,6 +53,11 @@ export class StoreComponent implements OnInit {
    */
   private _fetchData() {
     this.produtoService.listarProdutosByVendedor(this.activatedRoute.snapshot.params["id"]).subscribe((response) => {
+      response.forEach(product => {
+        this.stoService.getImagesByOwner(product.id).subscribe(response => { 
+          if(response && response[0]) product.imagem = response[0].replaceAll("//", "/");
+        });
+      });
       this.productData = response;
     });
   }
