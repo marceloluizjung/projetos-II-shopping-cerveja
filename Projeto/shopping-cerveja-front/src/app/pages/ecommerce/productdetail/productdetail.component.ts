@@ -62,6 +62,13 @@ export class ProductdetailComponent implements OnInit {
         if(this.productData.quantidade == 0) this.productData.quantityPurchased = 0;
         else this.productData.quantityPurchased = 1;
       });
+      this.stoService.getImagesByOwner(this.activatedRoute.snapshot.params["id"]).subscribe(response => { 
+        this.productData.imagemPrincipal = response[0].replaceAll("//", "/");
+        this.productData.imagens = [];
+        response.forEach(imagem => { 
+          this.productData.imagens.push(imagem.replaceAll("//", "/"));
+        });
+      });
   }
 
   private addToCart() {

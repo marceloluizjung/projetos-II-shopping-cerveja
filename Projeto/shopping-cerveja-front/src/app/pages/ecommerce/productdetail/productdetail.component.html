@@ -8,16 +8,23 @@
 
                         <div class="tab-content pt-0">
                             <div class="tab-pane d-block">
-                                <img id="expandedImg" src="assets/images/products/kaiser_lata.png" alt=""
+                                <img id="expandedImg" [src]="productData?.imagemPrincipal" alt=""
                                     class="img-fluid mx-auto d-block rounded">
                             </div>
                         </div>
-
+                        <ul class="nav nav-pills nav-justified">
+                            <li *ngFor="let imagem of productData?.imagens"  class="nav-item">
+                                <a href="javascript: void(0);" data-toggle="tab" class="nav-link product-thumb">
+                                    <img [src]="imagem" alt="" style="height: 100px;"
+                                        class="img-fluid mx-auto d-block rounded" (click)="imageShow($event)">
+                                </a>
+                            </li>
+                        </ul>
                     </div> <!-- end col -->
                     <div class="col-xl-7">
                         <div class="pl-xl-3 mt-3 mt-xl-0">
-                            <h4>{{productData.nome}}</h4>
-                            <h6>{{productData.marca}}</h6>
+                            <h4>{{productData?.nome}}</h4>
+                            <h6>{{productData?.marca}}</h6>
                             <p class="text-muted float-left mr-3">
                                 <span class="mdi mdi-star text-warning"></span>
                                 <span class="mdi mdi-star text-warning"></span>

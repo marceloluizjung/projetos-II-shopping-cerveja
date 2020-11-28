@@ -40,7 +40,6 @@ export class ProductsComponent implements OnInit {
    * fetches product values
    */
   private _fetchData() {
-
     this.produtoService.listarProdutos()
       .subscribe(
         data => {
