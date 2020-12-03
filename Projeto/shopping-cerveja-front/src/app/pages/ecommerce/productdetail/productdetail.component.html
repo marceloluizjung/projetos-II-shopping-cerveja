@@ -32,9 +32,10 @@
                                 <span class="mdi mdi-star text-warning"></span>
                                 <span class="mdi mdi-star"></span>
                             </p>
-                            <h4 class="mb-4"><b>R$ {{productData?.valor}}</b></h4>
+                            <h4 class="mb-4" style="clear: both;"><b>R$ {{productData?.valor}}</b></h4>
                             <h4><span *ngIf="productData?.quantidade > 0"
                                     class="badge bg-soft-success text-success mb-4">Disponível: {{productData?.quantidade}} itens</span></h4>
+                            <h5>{{productData?.descricao}}</h5>                                    
                             <h4><span *ngIf="productData?.quantidade == 0"
                                     class="badge bg-soft-danger text-danger mb-4">Fora de estoque</span></h4>
                                 <label class="my-1 mr-2" for="quantityinput">Quantidade</label>

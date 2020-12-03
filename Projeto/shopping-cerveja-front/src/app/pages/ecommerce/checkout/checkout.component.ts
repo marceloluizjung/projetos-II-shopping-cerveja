@@ -120,6 +120,7 @@ export class CheckoutComponent implements OnInit {
           data => {
             Swal.fire('Confirmada!', 'Sua compra foi confirmada.', 'success');
             localStorage.removeItem('cartItems');
+            this.ordersData = [];
           },
           error => {
             console.log(error);
